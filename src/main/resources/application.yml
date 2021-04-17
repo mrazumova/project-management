@@ -3,11 +3,13 @@ spring:
     hibernate:
       ddl-auto: none
     generate-ddl: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
   datasource:
-    adapter: mysql
-    encoding: utf-8
     url: ${DB_URL}
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   main:
