@@ -1,12 +1,38 @@
 # Project-Management-API
 
-## build properties
+## Startup
+
+Create build.properties file with environment variables.
+
+_Packaging:_
+
+```bash
+mvn clean package
+```
+
+_Building docker image:_
+
+```bash
+docker build . -t project-management-api:1.0
+```
+
+_Starting docker container:_
+
+```bash
+docker run --env-file ./buil.properties -p 8080:8080 project-management-api:1.0
+```
+
+## Build properties
 
 ```properties
 DB_URL=
 DB_USERNAME=
 DB_PASSWORD=
 ```
+
+## Requirements
+
+- MySQL database
 
 ## API Documentation
 
