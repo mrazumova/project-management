@@ -1,6 +1,7 @@
 package by.bsu.famcs.specification;
 
 import by.bsu.famcs.entity.ProjectAnalytics;
+import by.bsu.famcs.entity.ProjectAnalytics_;
 import by.bsu.famcs.filter.ProjectAnalyticsFilter;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -8,6 +9,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectAnalyticsSpecification implements Specification<ProjectAnalytics> {
 
@@ -19,6 +22,17 @@ public class ProjectAnalyticsSpecification implements Specification<ProjectAnaly
 
     @Override
     public Predicate toPredicate(Root<ProjectAnalytics> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-        return null;
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (filter.getAlreadyReceived() != null)
+            predicates.add(criteriaBuilder.equal(root.get(ProjectAnalytics_.ALREADY_RECEIVED), filter.getAlreadyReceived()));
+
+        if (filter.getAlreadySpent() != null)
+            predicates.add(criteriaBuilder.equal(root.get(ProjectAnalytics_.ALREADY_SPENT), filter.getAlreadySpent()));
+
+        if (filter.getForecastedCost() != null)
+            predicates.add(criteriaBuilder.equal(root.get(ProjectAnalytics_.FORECASTED_COST), filter.getForecastedCost()));
+
+        return predicates.isEmpty() ? criteriaBuilder.conjunction() : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 }
