@@ -1,7 +1,5 @@
 package by.bsu.famcs.filter;
 
-import by.bsu.famcs.entity.Project;
-
 import java.time.LocalDateTime;
 
 public class PaymentHistoryFilter {
@@ -10,7 +8,7 @@ public class PaymentHistoryFilter {
 
     private LocalDateTime paymentDate;
 
-    private Project project;
+    private String projectId;
 
     public Long getAmount() {
         return amount;
@@ -28,11 +26,11 @@ public class PaymentHistoryFilter {
         this.paymentDate = paymentDate;
     }
 
-    public Project getProject() {
-        return project;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 }

@@ -27,9 +27,6 @@ public class DepartmentSpecification implements Specification<Department> {
         if (filter.getName() != null)
             predicates.add(criteriaBuilder.equal(root.get(Department_.NAME), filter.getName()));
 
-        if (filter.getManager() != null)
-            predicates.add(criteriaBuilder.equal(root.get(Department_.MANAGER), filter.getManager()));
-
         return predicates.isEmpty() ? criteriaBuilder.conjunction() : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 }

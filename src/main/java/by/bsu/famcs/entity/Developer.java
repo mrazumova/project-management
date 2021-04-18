@@ -37,13 +37,11 @@ public class Developer {
     @Column(name = "salary")
     private int salary;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id", referencedColumnName = "id")
-    private Project project;
+    @Column(name = "project_id")
+    private String projectId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "unit_id", referencedColumnName = "id")
-    private Unit unit;
+    @Column(name = "unit_id")
+    private String unitId;
 
     public String getId() {
         return id;
@@ -109,19 +107,19 @@ public class Developer {
         this.salary = salary;
     }
 
-    public Project getProject() {
-        return project;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public String getUnitId() {
+        return unitId;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setUnitId(String unitId) {
+        this.unitId = unitId;
     }
 }

@@ -1,6 +1,5 @@
 package by.bsu.famcs.filter;
 
-import by.bsu.famcs.entity.Manager;
 import by.bsu.famcs.entity.PricingModel;
 import by.bsu.famcs.entity.Status;
 import by.bsu.famcs.entity.SupportType;
@@ -17,7 +16,7 @@ public class ProjectFilter {
 
     private Status status;
 
-    private Manager manager;
+    private String managerId;
 
     private SupportType supportType;
 
@@ -57,12 +56,12 @@ public class ProjectFilter {
         this.status = status;
     }
 
-    public Manager getManager() {
-        return manager;
+    public String getManagerId() {
+        return managerId;
     }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
+    public void setManagerId(String managerId) {
+        this.managerId = managerId;
     }
 
     public SupportType getSupportType() {

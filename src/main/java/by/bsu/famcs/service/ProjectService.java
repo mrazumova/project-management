@@ -1,11 +1,11 @@
 package by.bsu.famcs.service;
 
-import by.bsu.famcs.entity.Project;
+import by.bsu.famcs.dto.ProjectDto;
 import by.bsu.famcs.filter.ProjectFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface ProjectService extends CrudService<Project> {
+public interface ProjectService extends CrudService<ProjectDto> {
 
-    Page<Project> findAll(ProjectFilter filter, Pageable pageable);
+    Page<ProjectDto> findAll(ProjectFilter filter, Pageable pageable);
 }

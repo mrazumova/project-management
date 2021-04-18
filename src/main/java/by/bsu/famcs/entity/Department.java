@@ -20,10 +20,6 @@ public class Department {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "head_id", referencedColumnName = "id")
-    private Manager manager;
-
     public String getId() {
         return id;
     }
@@ -48,11 +44,4 @@ public class Department {
         this.description = description;
     }
 
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
 }

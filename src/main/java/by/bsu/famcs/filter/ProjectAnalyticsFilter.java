@@ -8,6 +8,8 @@ public class ProjectAnalyticsFilter {
 
     private Long alreadyReceived;
 
+    private String projectId;
+
     public String getForecastedCost() {
         return forecastedCost;
     }
@@ -30,5 +32,13 @@ public class ProjectAnalyticsFilter {
 
     public void setAlreadyReceived(Long alreadyReceived) {
         this.alreadyReceived = alreadyReceived;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 }

@@ -30,8 +30,8 @@ public class PaymentHistorySpecification implements Specification<PaymentHistory
         if (filter.getAmount() != null)
             predicates.add(criteriaBuilder.equal(root.get(PaymentHistory_.AMOUNT), filter.getAmount()));
 
-        if (filter.getProject() != null)
-            predicates.add(criteriaBuilder.equal(root.get(PaymentHistory_.PROJECT), filter.getProject()));
+        if (filter.getProjectId() != null)
+            predicates.add(criteriaBuilder.equal(root.get(PaymentHistory_.PROJECT_ID), filter.getProjectId()));
 
         return predicates.isEmpty() ? criteriaBuilder.conjunction() : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }

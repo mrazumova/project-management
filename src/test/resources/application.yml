@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changeLog.xml

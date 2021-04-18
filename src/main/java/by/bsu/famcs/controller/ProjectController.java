@@ -1,13 +1,12 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.Project;
+import by.bsu.famcs.dto.ProjectDto;
 import by.bsu.famcs.filter.ProjectFilter;
 import by.bsu.famcs.service.ProjectService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/projects")
@@ -22,22 +21,22 @@ public class ProjectController {
     }
 
     @GetMapping
-    public Page<Project> getAllProjects(ProjectFilter filter, Pageable pageable) {
+    public Page<ProjectDto> getAllProjects(ProjectFilter filter, Pageable pageable) {
         return projectService.findAll(filter, pageable);
     }
 
     @GetMapping(PROJECT_ID_PARAM)
-    public ResponseEntity<Project> getProjectById(@PathVariable String projectId) {
+    public ResponseEntity<ProjectDto> getProjectById(@PathVariable String projectId) {
         return ResponseEntity.of(projectService.findById(projectId));
     }
 
     @PostMapping
-    public Project createProject(@RequestBody Project project) {
+    public ProjectDto createProject(@RequestBody ProjectDto project) {
         return projectService.create(project);
     }
 
     @PutMapping(PROJECT_ID_PARAM)
-    public Project updateAnnotation(@RequestBody Project project, @PathVariable String projectId) {
+    public ProjectDto updateAnnotation(@RequestBody ProjectDto project, @PathVariable String projectId) {
         return projectService.update(project, projectId);
     }
 

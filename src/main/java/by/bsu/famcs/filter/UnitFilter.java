@@ -1,15 +1,10 @@
 package by.bsu.famcs.filter;
 
-import by.bsu.famcs.entity.Department;
-import by.bsu.famcs.entity.Manager;
-
 public class UnitFilter {
 
     private String name;
 
-    private Manager manager;
-
-    private Department department;
+    private String departmentId;
 
     public String getName() {
         return name;
@@ -19,19 +14,11 @@ public class UnitFilter {
         this.name = name;
     }
 
-    public Manager getManager() {
-        return manager;
+    public String getDepartmentId() {
+        return departmentId;
     }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
 }

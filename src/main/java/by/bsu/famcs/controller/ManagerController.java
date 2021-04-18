@@ -1,6 +1,6 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.Manager;
+import by.bsu.famcs.dto.ManagerDto;
 import by.bsu.famcs.filter.ManagerFilter;
 import by.bsu.famcs.service.ManagerService;
 import org.springframework.data.domain.Page;
@@ -21,22 +21,22 @@ public class ManagerController {
     }
 
     @GetMapping
-    public Page<Manager> getAllManagers(ManagerFilter filter, Pageable pageable) {
+    public Page<ManagerDto> getAllManagers(ManagerFilter filter, Pageable pageable) {
         return managerService.findAll(filter, pageable);
     }
 
     @GetMapping(MANAGER_ID_PARAM)
-    public ResponseEntity<Manager> getManagerById(@PathVariable String managerId) {
+    public ResponseEntity<ManagerDto> getManagerById(@PathVariable String managerId) {
         return ResponseEntity.of(managerService.findById(managerId));
     }
 
     @PostMapping
-    public Manager createManager(@RequestBody Manager manager) {
+    public ManagerDto createManager(@RequestBody ManagerDto manager) {
         return managerService.create(manager);
     }
 
     @PutMapping(MANAGER_ID_PARAM)
-    public Manager updateManager(@RequestBody Manager manager, @PathVariable String managerId) {
+    public ManagerDto updateManager(@RequestBody ManagerDto manager, @PathVariable String managerId) {
         return managerService.update(manager, managerId);
     }
 

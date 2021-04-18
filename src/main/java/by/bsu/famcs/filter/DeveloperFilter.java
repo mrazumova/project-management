@@ -1,8 +1,5 @@
 package by.bsu.famcs.filter;
 
-import by.bsu.famcs.entity.Project;
-import by.bsu.famcs.entity.Unit;
-
 public class DeveloperFilter {
 
     private String name;
@@ -19,9 +16,9 @@ public class DeveloperFilter {
 
     private Integer salary;
 
-    private Project project;
+    private String projectId;
 
-    private Unit unit;
+    private String unitId;
 
     public String getName() {
         return name;
@@ -79,19 +76,23 @@ public class DeveloperFilter {
         this.salary = salary;
     }
 
-    public Project getProject() {
-        return project;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public void setUnitId(String unitId) {
+        this.unitId = unitId;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public String getUnitId() {
+        return unitId;
+    }
+
+    public void setUnit(String unitId) {
+        this.unitId = unitId;
     }
 }

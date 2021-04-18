@@ -20,9 +20,8 @@ public class ExpenseHistory {
     @Column(name = "expense_date")
     private LocalDateTime expenseDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id", referencedColumnName = "id")
-    private Project project;
+    @Column(name = "project_id")
+    private String projectId;
 
     public String getId() {
         return id;
@@ -48,11 +47,11 @@ public class ExpenseHistory {
         this.expenseDate = expenseDate;
     }
 
-    public Project getProject() {
-        return project;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 }

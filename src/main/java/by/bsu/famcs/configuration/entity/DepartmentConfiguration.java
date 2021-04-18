@@ -1,5 +1,9 @@
 package by.bsu.famcs.configuration.entity;
 
+import by.bsu.famcs.dto.DepartmentDto;
+import by.bsu.famcs.entity.Department;
+import by.bsu.famcs.mapper.AbstractMapper;
+import by.bsu.famcs.mapper.impl.DepartmentMapper;
 import by.bsu.famcs.repository.DepartmentRepository;
 import by.bsu.famcs.service.DepartmentService;
 import by.bsu.famcs.service.impl.DepartmentServiceImpl;
@@ -16,7 +20,12 @@ public class DepartmentConfiguration {
     }
 
     @Bean
-    public DepartmentService departmentService() {
-        return new DepartmentServiceImpl(departmentRepository);
+    public AbstractMapper<Department, DepartmentDto> departmentMapper() {
+        return new DepartmentMapper();
+    }
+
+    @Bean
+    public DepartmentService departmentService(AbstractMapper<Department, DepartmentDto> departmentMapper) {
+        return new DepartmentServiceImpl(departmentRepository, departmentMapper);
     }
 }

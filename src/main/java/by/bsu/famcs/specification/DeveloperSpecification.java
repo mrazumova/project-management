@@ -2,7 +2,6 @@ package by.bsu.famcs.specification;
 
 import by.bsu.famcs.entity.Developer;
 import by.bsu.famcs.entity.Developer_;
-import by.bsu.famcs.filter.DepartmentFilter;
 import by.bsu.famcs.filter.DeveloperFilter;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -43,11 +42,11 @@ public class DeveloperSpecification implements Specification<Developer> {
         if (filter.getSpecialization() != null)
             predicates.add(criteriaBuilder.equal(root.get(Developer_.SPECIALIZATION), filter.getSpecialization()));
 
-        if (filter.getProject() != null)
-            predicates.add(criteriaBuilder.equal(root.get(Developer_.PROJECT), filter.getProject()));
+        if (filter.getProjectId() != null)
+            predicates.add(criteriaBuilder.equal(root.get(Developer_.PROJECT_ID), filter.getProjectId()));
 
-        if (filter.getUnit() != null)
-            predicates.add(criteriaBuilder.equal(root.get(Developer_.UNIT), filter.getUnit()));
+        if (filter.getUnitId() != null)
+            predicates.add(criteriaBuilder.equal(root.get(Developer_.UNIT_ID), filter.getUnitId()));
 
         return predicates.isEmpty() ? criteriaBuilder.conjunction() : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }

@@ -33,6 +33,9 @@ public class ProjectAnalyticsSpecification implements Specification<ProjectAnaly
         if (filter.getForecastedCost() != null)
             predicates.add(criteriaBuilder.equal(root.get(ProjectAnalytics_.FORECASTED_COST), filter.getForecastedCost()));
 
+        if (filter.getProjectId() != null)
+            predicates.add(criteriaBuilder.equal(root.get(ProjectAnalytics_.PROJECT_ID), filter.getProjectId()));
+
         return predicates.isEmpty() ? criteriaBuilder.conjunction() : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 }

@@ -14,6 +14,9 @@ public class ProjectAnalytics {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
+    @Column(name = "project_id")
+    private String projectId;
+
     @Column(name = "forecasted_cost")
     private long forecastedCost;
 
@@ -29,6 +32,14 @@ public class ProjectAnalytics {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public long getForecastedCost() {

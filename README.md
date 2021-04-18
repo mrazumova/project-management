@@ -33,6 +33,12 @@ DB_PASSWORD=
 ## Requirements
 
 - MySQL database
+- Keycloak - open source identity and access management solution
+- Docker
+
+## Security
+
+## Tests
 
 ## API Documentation
 

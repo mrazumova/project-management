@@ -1,6 +1,6 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.Developer;
+import by.bsu.famcs.dto.DeveloperDto;
 import by.bsu.famcs.filter.DeveloperFilter;
 import by.bsu.famcs.service.DeveloperService;
 import org.springframework.data.domain.Page;
@@ -21,22 +21,22 @@ public class DeveloperController {
     }
 
     @GetMapping
-    public Page<Developer> getAllDevelopers(DeveloperFilter filter, Pageable pageable) {
+    public Page<DeveloperDto> getAllDevelopers(DeveloperFilter filter, Pageable pageable) {
         return developerService.findAll(filter, pageable);
     }
 
     @GetMapping(DEVELOPER_ID_PARAM)
-    public ResponseEntity<Developer> getDeveloperById(@PathVariable String developerId) {
+    public ResponseEntity<DeveloperDto> getDeveloperById(@PathVariable String developerId) {
         return ResponseEntity.of(developerService.findById(developerId));
     }
 
     @PostMapping
-    public Developer createDeveloper(@RequestBody Developer developer) {
+    public DeveloperDto createDeveloper(@RequestBody DeveloperDto developer) {
         return developerService.create(developer);
     }
 
     @PutMapping(DEVELOPER_ID_PARAM)
-    public Developer updateDeveloper(@RequestBody Developer developer, @PathVariable String developerId) {
+    public DeveloperDto updateDeveloper(@RequestBody DeveloperDto developer, @PathVariable String developerId) {
         return developerService.update(developer, developerId);
     }
 

@@ -27,11 +27,8 @@ public class UnitSpecification implements Specification<Unit> {
         if (filter.getName() != null)
             predicates.add(criteriaBuilder.equal(root.get(Unit_.NAME), filter.getName()));
 
-        if (filter.getDepartment() != null)
-            predicates.add(criteriaBuilder.equal(root.get(Unit_.DEPARTMENT), filter.getDepartment()));
-
-        if (filter.getManager() != null)
-            predicates.add(criteriaBuilder.equal(root.get(Unit_.MANAGER), filter.getManager()));
+        if (filter.getDepartmentId() != null)
+            predicates.add(criteriaBuilder.equal(root.get(Unit_.DEPARTMENT_ID), filter.getDepartmentId()));
 
         return predicates.isEmpty() ? criteriaBuilder.conjunction() : criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }

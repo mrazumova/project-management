@@ -36,8 +36,8 @@ public class ProjectSpecification implements Specification<Project> {
         if (filter.getPricingModel() != null)
             predicates.add(criteriaBuilder.equal(root.get(Project_.PRICING_MODEL), filter.getPricingModel()));
 
-        if (filter.getManager() != null)
-            predicates.add(criteriaBuilder.equal(root.get(Project_.MANAGER), filter.getManager()));
+        if (filter.getManagerId() != null)
+            predicates.add(criteriaBuilder.equal(root.get(Project_.MANAGER_ID), filter.getManagerId()));
 
         if (filter.getStarted() != null)
             predicates.add(criteriaBuilder.equal(root.get(Project_.STARTED), filter.getStarted()));

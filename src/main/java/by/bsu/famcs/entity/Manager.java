@@ -33,9 +33,8 @@ public class Manager {
     @Column(name = "salary")
     private int salary;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "unit_id", referencedColumnName = "id")
-    private Unit unit;
+    @Column(name = "unit_id")
+    private String unitId;
 
     public String getId() {
         return id;
@@ -93,11 +92,11 @@ public class Manager {
         this.salary = salary;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public String getUnitId() {
+        return unitId;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setUnitId(String unitId) {
+        this.unitId = unitId;
     }
 }

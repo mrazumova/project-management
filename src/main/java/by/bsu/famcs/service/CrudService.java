@@ -6,11 +6,11 @@ public interface CrudService<D> {
 
     Optional<D> findById(String id);
 
-    D create(D entity);
+    D create(D dto);
 
-    D update(D entity, String entityId);
+    D update(D dto, String entityId);
 
-    void delete(D entity);
+    void delete(D dto);
 
     void deleteById(String id);
 

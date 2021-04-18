@@ -1,6 +1,6 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.ExpenseHistory;
+import by.bsu.famcs.dto.ExpenseHistoryDto;
 import by.bsu.famcs.filter.ExpenseHistoryFilter;
 import by.bsu.famcs.service.ExpenseHistoryService;
 import org.springframework.data.domain.Page;
@@ -21,22 +21,22 @@ public class ExpenseHistoryController {
     }
 
     @GetMapping
-    public Page<ExpenseHistory> getAllExpenseHistories(ExpenseHistoryFilter filter, Pageable pageable) {
+    public Page<ExpenseHistoryDto> getAllExpenseHistories(ExpenseHistoryFilter filter, Pageable pageable) {
         return expenseHistoryService.findAll(filter, pageable);
     }
 
     @GetMapping(EXPENSE_HISTORY_ID_PARAM)
-    public ResponseEntity<ExpenseHistory> getExpenseHistoryById(@PathVariable String expenseHistoryId) {
+    public ResponseEntity<ExpenseHistoryDto> getExpenseHistoryById(@PathVariable String expenseHistoryId) {
         return ResponseEntity.of(expenseHistoryService.findById(expenseHistoryId));
     }
 
     @PostMapping
-    public ExpenseHistory createExpenseHistory(@RequestBody ExpenseHistory expenseHistory) {
+    public ExpenseHistoryDto createExpenseHistory(@RequestBody ExpenseHistoryDto expenseHistory) {
         return expenseHistoryService.create(expenseHistory);
     }
 
     @PutMapping(EXPENSE_HISTORY_ID_PARAM)
-    public ExpenseHistory updateExpenseHistory(@RequestBody ExpenseHistory expenseHistory, @PathVariable String expenseHistoryId) {
+    public ExpenseHistoryDto updateExpenseHistory(@RequestBody ExpenseHistoryDto expenseHistory, @PathVariable String expenseHistoryId) {
         return expenseHistoryService.update(expenseHistory, expenseHistoryId);
     }
 

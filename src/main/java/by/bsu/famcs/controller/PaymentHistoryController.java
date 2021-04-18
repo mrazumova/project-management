@@ -1,6 +1,6 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.PaymentHistory;
+import by.bsu.famcs.dto.PaymentHistoryDto;
 import by.bsu.famcs.filter.PaymentHistoryFilter;
 import by.bsu.famcs.service.PaymentHistoryService;
 import org.springframework.data.domain.Page;
@@ -21,22 +21,22 @@ public class PaymentHistoryController {
     }
 
     @GetMapping
-    public Page<PaymentHistory> getAllPaymentHistories(PaymentHistoryFilter filter, Pageable pageable) {
+    public Page<PaymentHistoryDto> getAllPaymentHistories(PaymentHistoryFilter filter, Pageable pageable) {
         return paymentHistoryService.findAll(filter, pageable);
     }
 
     @GetMapping(PAYMENT_HISTORY_ID_PARAM)
-    public ResponseEntity<PaymentHistory> getPaymentHistoryById(@PathVariable String paymentHistoryId) {
+    public ResponseEntity<PaymentHistoryDto> getPaymentHistoryById(@PathVariable String paymentHistoryId) {
         return ResponseEntity.of(paymentHistoryService.findById(paymentHistoryId));
     }
 
     @PostMapping
-    public PaymentHistory createPaymentHistory(@RequestBody PaymentHistory paymentHistory) {
+    public PaymentHistoryDto createPaymentHistory(@RequestBody PaymentHistoryDto paymentHistory) {
         return paymentHistoryService.create(paymentHistory);
     }
 
     @PutMapping(PAYMENT_HISTORY_ID_PARAM)
-    public PaymentHistory updatePaymentHistory(@RequestBody PaymentHistory paymentHistory, @PathVariable String paymentHistoryId) {
+    public PaymentHistoryDto updatePaymentHistory(@RequestBody PaymentHistoryDto paymentHistory, @PathVariable String paymentHistoryId) {
         return paymentHistoryService.update(paymentHistory, paymentHistoryId);
     }
 

@@ -10,9 +10,9 @@ public class ManagerFilter {
 
     private String cvLink;
 
-    private int workload;
+    private Integer workload;
 
-    private int salary;
+    private Integer salary;
 
     private String unitId;
 
@@ -48,19 +48,19 @@ public class ManagerFilter {
         this.cvLink = cvLink;
     }
 
-    public int getWorkload() {
+    public Integer getWorkload() {
         return workload;
     }
 
-    public void setWorkload(int workload) {
+    public void setWorkload(Integer workload) {
         this.workload = workload;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 

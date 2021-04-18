@@ -1,131 +1,89 @@
 --liquibase formatted sql
 
 --changeset Razumava_M:20210401-1
-CREATE TABLE `DEVELOPER`
+create table `developer`
 (
-    `ID`             VARCHAR(36) PRIMARY KEY,
-    `SURNAME`        VARCHAR(50),
-    `NAME`           VARCHAR(50),
-    `SPECIALIZATION` VARCHAR(50),
-    `LEVEL`          VARCHAR(50),
-    `CV_LINK`        VARCHAR(255),
-    `WORKLOAD`       INT,
-    `SALARY`         INT,
-    `PROJECT_ID`     VARCHAR(36),
-    `UNIT_ID`        VARCHAR(36)
+    `id`             varchar(36) primary key,
+    `surname`        varchar(50),
+    `name`           varchar(50),
+    `specialization` varchar(50),
+    `level`          varchar(50),
+    `cv_link`        varchar(255),
+    `workload`       int,
+    `salary`         int,
+    `project_id`     varchar(36),
+    `unit_id`        varchar(36)
 );
 
 --changeset Razumava_M:20210401-2
-CREATE TABLE `MANAGER`
+create table `manager`
 (
-    `ID`       VARCHAR(36) PRIMARY KEY,
-    `SURNAME`  VARCHAR(50),
-    `NAME`     VARCHAR(50),
-    `POST`     VARCHAR(100),
-    `CV_LINK`  VARCHAR(255),
-    `WORKLOAD` INT,
-    `SALARY`   INT,
-    `UNIT_ID`  VARCHAR(255)
+    `id`       varchar(36) primary key,
+    `surname`  varchar(50),
+    `name`     varchar(50),
+    `post`     varchar(100),
+    `cv_link`  varchar(255),
+    `workload` int,
+    `salary`   int,
+    `unit_id`  varchar(36)
 );
 
 --changeset Razumava_M:20210401-3
-CREATE TABLE `PROJECT`
+create table `project`
 (
-    `ID`            VARCHAR(36) PRIMARY KEY,
-    `NAME`          VARCHAR(100),
-    `DESCRIPTION`   VARCHAR(255),
-    `TYPE`          VARCHAR(20),
-    `PRICING_MODEL` VARCHAR(20),
-    `STATUS`        VARCHAR(20),
-    `MANAGER_ID`    VARCHAR(36),
-    `STARTED`       DATETIME,
-    `FINISHED`      DATETIME,
-    `SUPPORT_TYPE`  VARCHAR(20)
+    `id`            varchar(36) primary key,
+    `name`          varchar(100),
+    `description`   varchar(255),
+    `type`          varchar(20),
+    `pricing_model` varchar(20),
+    `status`        varchar(20),
+    `manager_id`    varchar(36),
+    `started`       datetime,
+    `finished`      datetime,
+    `support_type`  varchar(20)
 );
 
 --changeset Razumava_M:20210401-4
-CREATE TABLE `PROJECT_ANALYTICS`
+create table `project_analytics`
 (
-    `ID`               VARCHAR(36) PRIMARY KEY,
-    `PROJECT_ID`       VARCHAR(36),
-    `FORECASTED_COST`  BIGINT,
-    `ALREADY_SPENT`    BIGINT,
-    `ALREADY_RECEIVED` BIGINT
+    `id`               varchar(36) primary key,
+    `project_id`       varchar(36),
+    `forecasted_cost`  bigint,
+    `already_spent`    bigint,
+    `already_received` bigint
 );
 
 --changeset Razumava_M:20210401-5
-CREATE TABLE `EXPENSE_HISTORY`
+create table `expense_history`
 (
-    `ID`           VARCHAR(36) PRIMARY KEY,
-    `AMOUNT`       BIGINT,
-    `EXPENSE_DATE` DATETIME,
-    `PROJECT_ID`   VARCHAR(36)
+    `id`           varchar(36) primary key,
+    `amount`       bigint,
+    `expense_date` datetime,
+    `project_id`   varchar(36)
 );
 
 --changeset Razumava_M:20210401-6
-CREATE TABLE `PAYMENT_HISTORY`
+create table `payment_history`
 (
-    `ID`           VARCHAR(36) PRIMARY KEY,
-    `AMOUNT`       BIGINT,
-    `PAYMENT_DATE` DATETIME,
-    `PROJECT_ID`   VARCHAR(36)
+    `id`           varchar(36) primary key,
+    `amount`       bigint,
+    `payment_date` datetime,
+    `project_id`   varchar(36)
 );
 
 --changeset Razumava_M:20210401-7
-CREATE TABLE `UNIT`
+create table `unit`
 (
-    `ID`            VARCHAR(36) PRIMARY KEY,
-    `NAME`          VARCHAR(100),
-    `DESCRIPTION`   VARCHAR(255),
-    `HEAD_ID`       VARCHAR(36),
-    `DEPARTMENT_ID` VARCHAR(36)
+    `id`            varchar(36) primary key,
+    `name`          varchar(100),
+    `description`   varchar(255),
+    `department_id` varchar(36)
 );
 
 --changeset Razumava_M:20210401-8
-CREATE TABLE `DEPARTMENT`
+create table `department`
 (
-    `ID`          VARCHAR(36) PRIMARY KEY,
-    `NAME`        VARCHAR(100),
-    `DESCRIPTION` VARCHAR(255),
-    `HEAD_ID`     VARCHAR(36)
+    `id`          varchar(36) primary key,
+    `name`        varchar(100),
+    `description` varchar(255)
 );
-
---changeset Razumava_M:20210401-9
-ALTER TABLE `DEVELOPER`
-    ADD FOREIGN KEY (`PROJECT_ID`) REFERENCES `PROJECT` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-10
-ALTER TABLE `DEVELOPER`
-    ADD FOREIGN KEY (`UNIT_ID`) REFERENCES `UNIT` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-11
-ALTER TABLE `MANAGER`
-    ADD FOREIGN KEY (`UNIT_ID`) REFERENCES `UNIT` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-12
-ALTER TABLE `PROJECT`
-    ADD FOREIGN KEY (`MANAGER_ID`) REFERENCES `MANAGER` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-13
-ALTER TABLE `EXPENSE_HISTORY`
-    ADD FOREIGN KEY (`PROJECT_ID`) REFERENCES `PROJECT` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-14
-ALTER TABLE `PAYMENT_HISTORY`
-    ADD FOREIGN KEY (`PROJECT_ID`) REFERENCES `PROJECT` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-15
-ALTER TABLE `UNIT`
-    ADD FOREIGN KEY (`HEAD_ID`) REFERENCES `MANAGER` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-16
-ALTER TABLE `UNIT`
-    ADD FOREIGN KEY (`DEPARTMENT_ID`) REFERENCES `DEPARTMENT` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-17
-ALTER TABLE `DEPARTMENT`
-    ADD FOREIGN KEY (`HEAD_ID`) REFERENCES `MANAGER` (`ID`) ON DELETE SET NULL;
-
---changeset Razumava_M:20210401-18
-ALTER TABLE `PROJECT_ANALYTICS`
-    ADD FOREIGN KEY (`PROJECT_ID`) REFERENCES `PROJECT` (`ID`) ON DELETE SET NULL;

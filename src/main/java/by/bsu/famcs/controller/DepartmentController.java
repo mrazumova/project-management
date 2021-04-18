@@ -1,13 +1,12 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.Department;
+import by.bsu.famcs.dto.DepartmentDto;
 import by.bsu.famcs.filter.DepartmentFilter;
 import by.bsu.famcs.service.DepartmentService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/departments")
@@ -22,22 +21,22 @@ public class DepartmentController {
     }
 
     @GetMapping
-    public Page<Department> getAllDepartments(DepartmentFilter filter, Pageable pageable) {
+    public Page<DepartmentDto> getAllDepartments(DepartmentFilter filter, Pageable pageable) {
         return departmentService.findAll(filter, pageable);
     }
 
     @GetMapping(DEPARTMENT_ID_PARAM)
-    public ResponseEntity<Department> getDepartmentById(@PathVariable String departmentId) {
+    public ResponseEntity<DepartmentDto> getDepartmentById(@PathVariable String departmentId) {
         return ResponseEntity.of(departmentService.findById(departmentId));
     }
 
     @PostMapping
-    public Department createDepartment(@RequestBody Department department) {
+    public DepartmentDto createDepartment(@RequestBody DepartmentDto department) {
         return departmentService.create(department);
     }
 
     @PutMapping(DEPARTMENT_ID_PARAM)
-    public Department updateAnnotation(@RequestBody Department department, @PathVariable String departmentId) {
+    public DepartmentDto updateAnnotation(@RequestBody DepartmentDto department, @PathVariable String departmentId) {
         return departmentService.update(department, departmentId);
     }
 

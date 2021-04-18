@@ -1,6 +1,6 @@
 package by.bsu.famcs.controller;
 
-import by.bsu.famcs.entity.ProjectAnalytics;
+import by.bsu.famcs.dto.ProjectAnalyticsDto;
 import by.bsu.famcs.filter.ProjectAnalyticsFilter;
 import by.bsu.famcs.service.ProjectAnalyticsService;
 import org.springframework.data.domain.Page;
@@ -21,22 +21,22 @@ public class ProjectAnalyticsController {
     }
 
     @GetMapping
-    public Page<ProjectAnalytics> getAllProjectAnalytics(ProjectAnalyticsFilter filter, Pageable pageable) {
+    public Page<ProjectAnalyticsDto> getAllProjectAnalytics(ProjectAnalyticsFilter filter, Pageable pageable) {
         return projectAnalyticsService.findAll(filter, pageable);
     }
 
     @GetMapping(PROJECT_ANALYTICS_ID_PARAM)
-    public ResponseEntity<ProjectAnalytics> getProjectAnalyticsById(@PathVariable String projectAnalyticsId) {
+    public ResponseEntity<ProjectAnalyticsDto> getProjectAnalyticsById(@PathVariable String projectAnalyticsId) {
         return ResponseEntity.of(projectAnalyticsService.findById(projectAnalyticsId));
     }
 
     @PostMapping
-    public ProjectAnalytics createProjectAnalytics(@RequestBody ProjectAnalytics projectAnalytics) {
+    public ProjectAnalyticsDto createProjectAnalytics(@RequestBody ProjectAnalyticsDto projectAnalytics) {
         return projectAnalyticsService.create(projectAnalytics);
     }
 
     @PutMapping(PROJECT_ANALYTICS_ID_PARAM)
-    public ProjectAnalytics updateAnnotation(@RequestBody ProjectAnalytics projectAnalytics, @PathVariable String projectAnalyticsId) {
+    public ProjectAnalyticsDto updateAnnotation(@RequestBody ProjectAnalyticsDto projectAnalytics, @PathVariable String projectAnalyticsId) {
         return projectAnalyticsService.update(projectAnalytics, projectAnalyticsId);
     }
 

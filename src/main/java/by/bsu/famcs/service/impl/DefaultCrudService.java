@@ -1,5 +1,6 @@
 package by.bsu.famcs.service.impl;
 
+import by.bsu.famcs.mapper.AbstractMapper;
 import by.bsu.famcs.service.CrudService;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,22 +8,30 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
-public abstract class DefaultCrudService<E> implements CrudService<E> {
+public abstract class DefaultCrudService<E, D> implements CrudService<D> {
 
-    @Override
-    public Optional<E> findById(String id) {
-        return getRepository().findById(id);
+    protected AbstractMapper<E, D> mapper;
+
+    public DefaultCrudService(AbstractMapper<E, D> mapper) {
+        this.mapper = mapper;
     }
 
     @Override
-    public E create(E entity) {
-        return getRepository().save(entity);
+    public Optional<D> findById(String id) {
+        Optional<E> entity = getRepository().findById(id);
+        return entity.map(e -> mapper.toDto(e));
+    }
+
+    @Override
+    public D create(D dto) {
+        E entity = mapper.toEntity(dto);
+        return mapper.toDto(getRepository().save(entity));
     }
 
     @Override
     @Transactional
-    public void delete(E entity) {
-        getRepository().delete(entity);
+    public void delete(D dto) {
+        getRepository().delete(mapper.toEntity(dto));
     }
 
     @Override

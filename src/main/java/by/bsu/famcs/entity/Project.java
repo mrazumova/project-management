@@ -33,9 +33,8 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "manager_id", referencedColumnName = "id")
-    private Manager manager;
+    @Column(name = "manager_id")
+    private String managerId;
 
     @Column(name = "started")
     private LocalDateTime started;
@@ -95,12 +94,12 @@ public class Project {
         this.status = status;
     }
 
-    public Manager getManager() {
-        return manager;
+    public String getManagerId() {
+        return managerId;
     }
 
-    public void setManager(Manager manager) {
-        this.manager = manager;
+    public void setManagerId(String managerId) {
+        this.managerId = managerId;
     }
 
     public LocalDateTime getStarted() {
