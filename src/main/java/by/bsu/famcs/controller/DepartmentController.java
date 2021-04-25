@@ -36,7 +36,7 @@ public class DepartmentController {
     }
 
     @PutMapping(DEPARTMENT_ID_PARAM)
-    public DepartmentDto updateAnnotation(@RequestBody DepartmentDto department, @PathVariable String departmentId) {
+    public DepartmentDto updateDepartment(@RequestBody DepartmentDto department, @PathVariable String departmentId) {
         return departmentService.update(department, departmentId);
     }
 

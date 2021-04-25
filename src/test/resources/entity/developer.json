@@ -1,0 +1,15 @@
+{
+  "surname": "Sidorov",
+  "name": "Alexander",
+  "specialization": "BACKEND",
+  "level": "MIDDLE",
+  "cvLink": "https://resume.com/4769487605",
+  "workload": 8,
+  "salary": 1100,
+  "project": {
+    "id": "bca4adcd-f356-4272-b494-ce1633aca085"
+  },
+  "unit": {
+    "id": "7551d31b-311a-4c6b-bd7b-584b129a6207"
+  }
+}

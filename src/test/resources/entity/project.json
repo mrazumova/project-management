@@ -1,0 +1,13 @@
+{
+  "name": "my-network",
+  "description": "social network",
+  "type": "PRODUCTION",
+  "pricingModel": "FIXED_PRICE",
+  "status": "PLANNING",
+  "manager": {
+    "id": "46469615-3cfe-4765-8c79-6584ded16f27"
+  },
+  "started": "2021-04-01T11:58:59.205Z",
+  "finished": null,
+  "supportType": "LONG_TERM"
+}

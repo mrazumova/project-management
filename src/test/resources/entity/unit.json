@@ -1,0 +1,9 @@
+{
+  "name": "Unit 1",
+  "description": "",
+  "department": {
+    "id": "66e8ce62-84e5-48ba-86f4-23be8084b5f1",
+    "name": "Department 2",
+    "description": "Project management department"
+  }
+}

@@ -77,7 +77,6 @@ create table `unit`
     `id`            varchar(36) primary key,
     `name`          varchar(100),
     `description`   varchar(255),
-    `head_id`       varchar(36),
     `department_id` varchar(36)
 );
 
@@ -86,6 +85,5 @@ create table `department`
 (
     `id`          varchar(36) primary key,
     `name`        varchar(100),
-    `description` varchar(255),
-    `head_id`     varchar(36)
+    `description` varchar(255)
 );
