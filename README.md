@@ -43,12 +43,10 @@ DB_PASSWORD=
 - TestContainers
 - Allure
 
-#### 
+#### Test reports
 
-```properties
-DB_URL=
-DB_USERNAME=
-DB_PASSWORD=
+```bash
+allure serve
 ```
 
 ## API Documentation

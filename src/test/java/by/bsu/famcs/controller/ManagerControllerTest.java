@@ -68,11 +68,6 @@ class ManagerControllerTest implements DefaultTestController<ManagerDto> {
         checkIsDeletedEntityTest(manager.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;

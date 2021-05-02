@@ -68,11 +68,6 @@ class UnitControllerTest implements DefaultTestController<UnitDto> {
         checkIsDeletedEntityTest(unit.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;

@@ -68,11 +68,6 @@ class ProjectAnalyticsControllerTest implements DefaultTestController<ProjectAna
         checkIsDeletedEntityTest(projectAnalytics.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;

@@ -68,11 +68,6 @@ public class DeveloperControllerTest implements DefaultTestController<DeveloperD
         checkIsDeletedEntityTest(developer.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;

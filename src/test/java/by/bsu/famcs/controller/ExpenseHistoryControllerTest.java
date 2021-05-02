@@ -68,11 +68,6 @@ class ExpenseHistoryControllerTest implements DefaultTestController<ExpenseHisto
         checkIsDeletedEntityTest(expenseHistory.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;

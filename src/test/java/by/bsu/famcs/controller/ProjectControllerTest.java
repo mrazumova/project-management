@@ -68,11 +68,6 @@ class ProjectControllerTest implements DefaultTestController<ProjectDto> {
         checkIsDeletedEntityTest(project.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;

@@ -68,11 +68,6 @@ class PaymentHistoryControllerTest implements DefaultTestController<PaymentHisto
         checkIsDeletedEntityTest(paymentHistory.getId());
     }
 
-    @AfterAll
-    static void stop(){
-        mySQLContainer.stop();
-    }
-
     @Override
     public MockMvc getMockMvc() {
         return mockMvc;
