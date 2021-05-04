@@ -14,3 +14,11 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/changeLog.xml
+keycloak:
+  realm: ${KEYCLOAK_REALM:null}
+  auth-server-url: ${KEYCLOAK_AUTH_SERVER:null}
+  resource: ${KEYCLOAK_RESOURCE:null}
+  principal-attribute: sub
+  credentials:
+    secret: ${KEYCLOAK_RESOURCE_PASSWORD:null}
+  bearer-only: true

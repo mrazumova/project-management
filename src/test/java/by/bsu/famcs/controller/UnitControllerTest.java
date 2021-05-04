@@ -7,10 +7,13 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.MySQLContainer;
 
 import java.io.IOException;
+
+import static by.bsu.famcs.common.TestConstant.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -38,6 +41,7 @@ class UnitControllerTest implements DefaultTestController<UnitDto> {
 
     @Test
     @Order(1)
+    @WithMockUser(value = DEFAULT_USER_ID, roles = EDIT_DATA)
     void create() throws Exception {
         UnitDto created = createEntityTest();
         unit = created;
@@ -45,12 +49,14 @@ class UnitControllerTest implements DefaultTestController<UnitDto> {
 
     @Test
     @Order(2)
+    @WithMockUser(value = DEFAULT_USER_ID, roles = READ_DATA)
     void getById() throws Exception {
         getEntityByIdTest(unit.getId());
     }
 
     @Test
     @Order(3)
+    @WithMockUser(value = DEFAULT_USER_ID, roles = EDIT_DATA)
     void update() throws Exception {
         UnitDto updated = updateEntityTest(unit.getId());
         unit = updated;
@@ -58,12 +64,14 @@ class UnitControllerTest implements DefaultTestController<UnitDto> {
 
     @Test
     @Order(4)
+    @WithMockUser(value = DEFAULT_USER_ID, roles = EDIT_DATA)
     void deleteById() throws Exception {
         removeEntityByIdTest(unit.getId());
     }
 
     @Test
     @Order(5)
+    @WithMockUser(value = DEFAULT_USER_ID, roles = READ_DATA)
     void checkIsDeleted() throws Exception {
         checkIsDeletedEntityTest(unit.getId());
     }

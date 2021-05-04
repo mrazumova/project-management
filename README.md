@@ -28,6 +28,10 @@ docker run --env-file ./buil.properties -p 8080:8080 project-management-api:1.0
 DB_URL=
 DB_USERNAME=
 DB_PASSWORD=
+KEYCLOAK_REALM=
+KEYCLOAK_AUTH_SERVER=
+KEYCLOAK_RESOURCE=
+KEYCLOAK_RESOURCE_PASSWORD=
 ```
 
 ## Requirements
@@ -37,6 +41,16 @@ DB_PASSWORD=
 - Docker
 
 ## Security
+
+User can access API only with token.
+
+Also service has roles and permissions:
+
+| Role  | READ_DATA | EDIT_DATA | READ_PAYMENTS | EDIT_PAYMENTS |
+| ------------- | ------------- | ------------- | ------------- |  ------------- |
+| ADMIN  | + | + | + | + |
+| MANAGER  | + | - | + | - |
+| USER  | + | - | - | - |
 
 ## Tests
 
