@@ -47,7 +47,7 @@ User can access API only with token.
 Also service has roles and permissions:
 
 | Role  | READ_DATA | EDIT_DATA | READ_PAYMENTS | EDIT_PAYMENTS |
-| ------------- | ------------- | ------------- | ------------- |  ------------- |
+| ------------- | :-------------: | :-------------: | :-------------: |  :-------------: |
 | ADMIN  | + | + | + | + |
 | MANAGER  | + | - | + | - |
 | USER  | + | - | - | - |
