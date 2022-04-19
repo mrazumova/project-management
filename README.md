@@ -19,7 +19,7 @@ docker build . -t project-management-api:1.0
 _Starting docker container:_
 
 ```bash
-docker run --env-file ./buil.properties -p 8080:8080 project-management-api:1.0
+docker run --env-file ./build.properties -p 8080:8080 project-management-api:1.0
 ```
 
 ## Build properties
